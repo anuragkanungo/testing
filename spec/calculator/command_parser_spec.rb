@@ -48,8 +48,6 @@ describe Calculator::CommandParser do
       expect(parser.parse(string)).to eq(0.0)
     end
 
-
-
   end
 
 
