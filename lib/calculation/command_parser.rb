@@ -3,7 +3,7 @@ class Calculation::CommandParser
 
   OPERATIONS = {:add => "add", :subtract => "subtract", :multiply => "multiply",
                :divide => "divide", :cancel => "cancel", :exit => "exit",
-               :square => "square", :sqrt => "sqrt"}
+               :square => "square", :sqrt => "sqr"}
 
   def initialize(calculator)
     @calculator = calculator

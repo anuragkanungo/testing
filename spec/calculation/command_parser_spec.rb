@@ -55,7 +55,7 @@ describe Calculation::CommandParser do
     end
 
     it "if sqrt is given should return 40.0" do
-      stdin = StringIO.new("sqrt\n")
+      stdin = StringIO.new("sqr\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(40.0)
     end
