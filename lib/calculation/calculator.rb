@@ -35,4 +35,8 @@ class Calculation::Calculator
     @accumulator = Math.sqrt(@accumulator)
   end
 
+  def cube
+    @accumulator**=3
+  end
+
 end
