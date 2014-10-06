@@ -15,4 +15,9 @@ class Calculator::Operations
     @accumulator *= value
   end
 
+  def subtract(value)
+    @accumulator -= value
+  end
+
+
 end
