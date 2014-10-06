@@ -20,4 +20,10 @@ class Calculator::Operations
   end
 
 
+  def cancel
+    @accumulator = 0.0
+  end
+
+
+
 end

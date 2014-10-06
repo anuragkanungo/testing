@@ -88,6 +88,19 @@ describe Calculator::Operations do
 
   end
 
+  describe "Cancel" do
 
+    it "should return 0.0 " do
+      calculator = Calculator::Operations.new
+      expect(calculator.cancel).to eq(0.0)
+    end
+
+    it "should return 0.0 when accumulator is 10" do
+      calculator = Calculator::Operations.new
+      calculator.add(10.0)
+      expect(calculator.cancel).to eq(0.0)
+    end
+
+  end
 
 end

@@ -30,6 +30,18 @@ describe Calculator::CommandParser do
       expect(parser.parse(string)).to eq(8.0)
     end
 
+    it "if multiply 5 is given should return 40.0" do
+      stdin = StringIO.new("multiply 5\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(40.0)
+    end
+
+    it "if multiply 4 is given should return 160.0" do
+      stdin = StringIO.new("multiply 4\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(160.0)
+    end
+
 
 
   end

@@ -15,6 +15,8 @@ class Calculator::CommandParser
       @calculator.add(args[1].to_i)
     elsif args[0] == "subtract"
       @calculator.subtract(args[1].to_i)
+    elsif args[0] == "multiply"
+      @calculator.multiply(args[1].to_i)
     end
 
   end
