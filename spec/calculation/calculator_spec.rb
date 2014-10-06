@@ -134,4 +134,20 @@ describe Calculation::Calculator do
     end
   end
 
+  describe "SquareRoot" do
+
+    it "should return 0" do
+      calculator = Calculation::Calculator.new
+      expect(calculator.sqrt).to eq(0.0)
+    end
+
+    it "should return 16.0" do
+      calculator = Calculation::Calculator.new
+      calculator.add(4)
+      expect(calculator.accumulator).to eq(4.0)
+      expect(calculator.sqrt).to eq(2.0)
+    end
+  end
+
+
 end

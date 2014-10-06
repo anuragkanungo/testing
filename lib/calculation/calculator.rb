@@ -31,4 +31,8 @@ class Calculation::Calculator
     @accumulator**2
   end
 
+  def sqrt
+    Math.sqrt(@accumulator)
+  end
+
 end
