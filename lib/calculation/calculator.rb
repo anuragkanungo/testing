@@ -1,5 +1,5 @@
 #basic math operations
-class Calculator::Operations
+class Calculation::Calculator
 
   attr_reader :accumulator
 

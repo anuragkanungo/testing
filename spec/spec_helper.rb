@@ -1,5 +1,5 @@
 require "rspec"
-require File.expand_path(File.join(File.dirname(__FILE__),'..', 'lib', "calculator"))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', "calculation"))
 
 RSpec.configure do |config|
   # Use color in STDOUT

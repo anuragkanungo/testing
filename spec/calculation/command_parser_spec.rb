@@ -1,10 +1,10 @@
 require_relative '../spec_helper'
 
-describe Calculator::CommandParser do
+describe Calculation::CommandParser do
 
-  parser = Calculator::CommandParser.new
+  parser = Calculation::CommandParser.new(Calculation::Calculator.new)
 
-  describe "Parse Command from CLI" do
+  describe "parse command from console" do
 
     it "if add 5 is given should return 5.0" do
       stdin = StringIO.new("add 5\n")
@@ -52,6 +52,17 @@ describe Calculator::CommandParser do
       stdin = StringIO.new("cancel\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(0.0)
+    end
+
+    it "if exit is give should exit" do
+      stdin = StringIO.new("exit\n")
+      string = stdin.gets.chomp
+      begin
+        parser.parse(string)
+      rescue SystemExit => e
+        expect(e.status).to_not eq 1
+        expect(e.status).to eq 0
+      end
     end
 
   end
