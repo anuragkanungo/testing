@@ -1,3 +1,4 @@
+require_relative '../calculation'
 #command line IO
 class Calculation::ConsoleIO
 
@@ -12,3 +13,6 @@ class Calculation::ConsoleIO
   end
 
 end
+
+
+Calculation::ConsoleIO.new(Calculation::CommandParser.new(Calculation::Calculator.new)).start

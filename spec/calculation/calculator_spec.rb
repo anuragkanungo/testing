@@ -119,4 +119,19 @@ describe Calculation::Calculator do
 
   end
 
+  describe "Square" do
+
+    it "should return 0" do
+      calculator = Calculation::Calculator.new
+      expect(calculator.square).to eq(0.0)
+    end
+
+    it "should return 16.0" do
+      calculator = Calculation::Calculator.new
+      calculator.add(4)
+      expect(calculator.accumulator).to eq(4.0)
+      expect(calculator.square).to eq(16.0)
+    end
+  end
+
 end

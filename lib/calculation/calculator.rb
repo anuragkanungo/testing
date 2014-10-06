@@ -27,4 +27,8 @@ class Calculation::Calculator
     @accumulator /= value
   end
 
+  def square
+    @accumulator**2
+  end
+
 end
