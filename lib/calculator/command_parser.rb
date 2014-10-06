@@ -1,12 +1,18 @@
 class Calculator::CommandParser
 
   def initialize
+    @calculator = Calculator::Operations.new
   end
 
-  def parse
+  def parse(inp)
+    args = inp.split
+    self.operate(args)
+  end
 
-    ARGV.each do |x|
-      p x
+  def operate(args)
+
+    if args[0] == "add"
+      @calculator.add(args[1].to_i)
     end
 
   end
