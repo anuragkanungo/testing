@@ -1,6 +1,8 @@
 #basic math operations
 class Calculator::Operations
 
+  attr_reader :accumulator
+
   def initialize
     @accumulator = 0.0
   end
