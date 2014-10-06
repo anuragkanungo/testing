@@ -2,7 +2,8 @@
 class Calculation::CommandParser
 
   OPERATIONS = {:add => "add", :subtract => "subtract", :multiply => "multiply",
-               :divide => "divide", :cancel => "cancel", :exit => "exit"}
+               :divide => "divide", :cancel => "cancel", :exit => "exit",
+               :square => "square", :sqrt => "sqrt"}
 
   def initialize(calculator)
     @calculator = calculator
@@ -24,6 +25,10 @@ class Calculation::CommandParser
       @calculator.divide(args[1].to_f)
     elsif args[0] == OPERATIONS[:cancel]
       @calculator.cancel
+    elsif args[0] == OPERATIONS[:square]
+      @calculator.square
+    elsif args[0] == OPERATIONS[:sqrt]
+      @calculator.sqrt
     elsif args[0] == OPERATIONS[:exit]
       exit
     else

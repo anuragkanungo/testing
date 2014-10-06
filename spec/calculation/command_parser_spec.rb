@@ -48,6 +48,18 @@ describe Calculation::CommandParser do
       expect(parser.parse(string)).to eq(40.0)
     end
 
+    it "if square is given should return 1600.0" do
+      stdin = StringIO.new("square\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(1600.0)
+    end
+
+    it "if sqrt is given should return 40.0" do
+      stdin = StringIO.new("sqrt\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(40.0)
+    end
+
     it "if cancel is given should return 0.0" do
       stdin = StringIO.new("cancel\n")
       string = stdin.gets.chomp

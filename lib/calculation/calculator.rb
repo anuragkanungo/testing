@@ -28,11 +28,11 @@ class Calculation::Calculator
   end
 
   def square
-    @accumulator**2
+    @accumulator**=2
   end
 
   def sqrt
-    Math.sqrt(@accumulator)
+    @accumulator = Math.sqrt(@accumulator)
   end
 
 end
