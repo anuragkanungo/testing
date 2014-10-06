@@ -8,7 +8,11 @@ class Calculator::Operations
   end
 
   def add(value)
-    @accumulator +=value
+    @accumulator += value
+  end
+
+  def multiply(value)
+    @accumulator *= value
   end
 
 end
