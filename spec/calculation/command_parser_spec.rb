@@ -2,71 +2,139 @@ require_relative '../spec_helper'
 
 describe Calculation::CommandParser do
 
-  parser = Calculation::CommandParser.new(Calculation::Calculator.new)
-
   describe "parse command from console" do
 
-    it "if add 5 is given should return 5.0" do
+    it "if add 5 is given should return 5.0 when previous value is 0.0" do
+      calculator = Calculation::Calculator.new(0.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("add 5\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(5.0)
     end
 
-    it "if add 10 is given should return 15.0" do
+    it "if add 10 is given should return 15.0 when previous value is 5.0" do
+      calculator = Calculation::Calculator.new(5.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("add 10\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(15.0)
     end
 
-    it "if subtract 5 is given should return 10.0" do
+    it "if subtract 5 is given should return -5.0 when previous value is 0.0" do
+      calculator = Calculation::Calculator.new(0.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("subtract 5\n")
       string = stdin.gets.chomp
-      expect(parser.parse(string)).to eq(10.0)
+      expect(parser.parse(string)).to eq(-5.0)
     end
 
-    it "if subtract 2 is given should return 8.0" do
+    it "if subtract 2 is given should return 8.0 when previous value is 10.0" do
+      calculator = Calculation::Calculator.new(10.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("subtract 2\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(8.0)
     end
 
-    it "if multiply 5 is given should return 40.0" do
+    it "if multiply 5 is given should return 40.0 when previous value is 8.0" do
+      calculator = Calculation::Calculator.new(8.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("multiply 5\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(40.0)
     end
 
-    it "if multiply 4 is given should return 160.0" do
+    it "if multiply 4 is given should return 160.0 when previous value is 40.0" do
+      calculator = Calculation::Calculator.new(40.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("multiply 4\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(160.0)
     end
 
-    it "if divide 4 is given should return 40.0" do
+    it "if divide 4 is given should return 40.0 when previous value is 160.0" do
+      calculator = Calculation::Calculator.new(160.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("divide 4\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(40.0)
     end
 
-    it "if square is given should return 1600.0" do
+    it "if square is given should return 1600.0 when previous value is 40.0" do
+      calculator = Calculation::Calculator.new(40.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("square\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(1600.0)
     end
 
-    it "if sqrt is given should return 40.0" do
+    it "if sqr is given should return 40.0 when previous value is 1600.0" do
+      calculator = Calculation::Calculator.new(1600.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("sqr\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(40.0)
     end
 
+    it "if cube is given should return 512.0 when previous value is 8.0" do
+      calculator = Calculation::Calculator.new(8.0)
+      parser = Calculation::CommandParser.new(calculator)
+      stdin = StringIO.new("cube\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(512.0)
+    end
+
+    it "if cubert is given should return 9.0 when previous value is 729.0" do
+      calculator = Calculation::Calculator.new(729.0)
+      parser = Calculation::CommandParser.new(calculator)
+      stdin = StringIO.new("cubert\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(9.0)
+    end
+
+    it "if abs is given should return 40.0 for 40" do
+      calculator = Calculation::Calculator.new(40.0)
+      parser = Calculation::CommandParser.new(calculator)
+      stdin = StringIO.new("abs\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(40.0)
+    end
+
+    it "if abs is given should return 20.0 for -20" do
+      calculator = Calculation::Calculator.new(-20.0)
+      parser = Calculation::CommandParser.new(calculator)
+      stdin = StringIO.new("abs\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(20.0)
+    end
+
+    it "if neg is given should return -20.0 for 20" do
+      calculator = Calculation::Calculator.new(20.0)
+      parser = Calculation::CommandParser.new(calculator)
+      stdin = StringIO.new("neg\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(-20.0)
+    end
+
+    it "if neg is given should return 10.0 for -10" do
+      calculator = Calculation::Calculator.new(-10.0)
+      parser = Calculation::CommandParser.new(calculator)
+      stdin = StringIO.new("neg\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(10.0)
+    end
+
     it "if cancel is given should return 0.0" do
+      calculator = Calculation::Calculator.new(50.0)
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("cancel\n")
       string = stdin.gets.chomp
       expect(parser.parse(string)).to eq(0.0)
     end
 
-    it "if exit is give should exit" do
+    it "if exit is given program should exit" do
+      calculator = Calculation::Calculator.new
+      parser = Calculation::CommandParser.new(calculator)
       stdin = StringIO.new("exit\n")
       string = stdin.gets.chomp
       begin
@@ -76,6 +144,26 @@ describe Calculation::CommandParser do
         expect(e.status).to eq 0
       end
     end
+
+    it "if repeat is given with argument 3 should return 180.0" do
+      calculator = Calculation::Calculator.new(0.0)
+      parser = Calculation::CommandParser.new(calculator)
+      parser.parse(StringIO.new("add 10\n").gets.chomp)
+      parser.parse(StringIO.new("multiply 5\n").gets.chomp)
+      parser.parse(StringIO.new("subtract 20\n").gets.chomp)
+      expect(parser.parse(StringIO.new("repeat 3\n").gets.chomp)).to eq(180.0)
+    end
+
+
+    it "if repeat is given with argument 2 should return 1430.0 " do
+      calculator = Calculation::Calculator.new(50.0)
+      parser = Calculation::CommandParser.new(calculator)
+      parser.parse(StringIO.new("add 10\n").gets.chomp)
+      parser.parse(StringIO.new("divide 10\n").gets.chomp)
+      parser.parse(StringIO.new("subtract 5\n").gets.chomp)
+      expect(parser.parse(StringIO.new("repeat 2\n").gets.chomp)).to eq(-4.9)
+    end
+
 
   end
 

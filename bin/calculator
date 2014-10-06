@@ -1,0 +1,7 @@
+require_relative '../lib/calculation'
+
+calculator = Calculation::Calculator.new
+parser = Calculation::CommandParser.new(calculator)
+console = Calculation::Console.new(parser)
+
+console.start

@@ -1,10 +1,10 @@
-#basic math operations
+#basic arithmetic operations
 class Calculation::Calculator
 
   attr_reader :accumulator
 
-  def initialize
-    @accumulator = 0.0
+  def initialize(accumulator = 0.0)
+    @accumulator = accumulator
   end
 
   def add(value)
@@ -20,7 +20,7 @@ class Calculation::Calculator
   end
 
   def cancel
-    @accumulator = 0.0
+    @accumulator = 0
   end
 
   def divide(value)
@@ -31,12 +31,24 @@ class Calculation::Calculator
     @accumulator**=2
   end
 
-  def sqrt
-    @accumulator = Math.sqrt(@accumulator)
+  def sqr
+    @accumulator = Math.sqrt(@accumulator) if @accumulator >= 0
   end
 
   def cube
     @accumulator**=3
+  end
+
+  def cubert
+    @accumulator = Math.cbrt(@accumulator).round(8)
+  end
+
+  def abs
+    @accumulator = @accumulator.abs
+  end
+
+  def neg
+    @accumulator *=-1
   end
 
 end
