@@ -23,4 +23,8 @@ class Calculator::Operations
     @accumulator = 0.0
   end
 
+  def divide(value)
+    @accumulator /= value
+  end
+
 end

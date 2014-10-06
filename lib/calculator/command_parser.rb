@@ -1,3 +1,4 @@
+#command controller
 class Calculator::CommandParser
 
   def initialize
@@ -22,10 +23,14 @@ class Calculator::CommandParser
       @calculator.subtract(args[1].to_i)
     elsif args[0] == "multiply"
       @calculator.multiply(args[1].to_i)
+    elsif args[0] == "divide"
+      @calculator.divide(args[1].to_i)
     elsif args[0] == "cancel"
       @calculator.cancel
     elsif args[0] == "exit"
       exit
+    else
+      "Invalid Command"
     end
 
   end

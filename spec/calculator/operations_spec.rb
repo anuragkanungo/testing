@@ -103,4 +103,21 @@ describe Calculator::Operations do
 
   end
 
+  describe "Divide" do
+
+    it "should return 0.0 when 5 is passed as argument" do
+      calculator = Calculator::Operations.new
+      expect(calculator.divide(5)).to eq(0.0)
+    end
+
+    it "should return 25.0 when 10 is passed as argument and previous accumulator value is 250.0" do
+      calculator = Calculator::Operations.new
+      expect(calculator.add(250)).to eq(250.0)
+      expect(calculator.accumulator).to eq(250.0)
+      expect(calculator.divide(10)).to eq(25.0)
+    end
+
+  end
+
+
 end
