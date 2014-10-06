@@ -17,6 +17,8 @@ class Calculator::CommandParser
       @calculator.subtract(args[1].to_i)
     elsif args[0] == "multiply"
       @calculator.multiply(args[1].to_i)
+    elsif args[0] == "cancel"
+      @calculator.cancel
     end
 
   end

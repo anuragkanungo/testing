@@ -19,11 +19,8 @@ class Calculator::Operations
     @accumulator -= value
   end
 
-
   def cancel
     @accumulator = 0.0
   end
-
-
 
 end

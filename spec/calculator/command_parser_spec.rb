@@ -42,6 +42,12 @@ describe Calculator::CommandParser do
       expect(parser.parse(string)).to eq(160.0)
     end
 
+    it "if cancel is given should return 0.0" do
+      stdin = StringIO.new("cancel\n")
+      string = stdin.gets.chomp
+      expect(parser.parse(string)).to eq(0.0)
+    end
+
 
 
   end
