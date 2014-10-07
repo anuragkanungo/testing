@@ -1,0 +1,17 @@
+require_relative '../spec_helper'
+
+describe Calculation::Subtract do
+
+  it "returns -5.0 when executed for number 5 with calculator previous value 0.0" do
+    calculator = Calculation::Calculator.new(0.0)
+    command = Calculation::Subtract.new(calculator,5)
+    expect(command.execute).to eq(-5.0)
+  end
+
+  it "returns 5.0 when executed for number 10.0 with calculator previous value 15.0" do
+    calculator = Calculation::Calculator.new(15.0)
+    command = Calculation::Subtract.new(calculator,10.0)
+    expect(command.execute).to eq(5.0)
+  end
+
+end

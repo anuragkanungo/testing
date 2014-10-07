@@ -7,7 +7,7 @@ class Calculation::Console
 
   def start
     loop do
-      puts @parser.parse(STDIN.gets)
+     puts @parser.parse(STDIN.gets)
     end
   end
 
