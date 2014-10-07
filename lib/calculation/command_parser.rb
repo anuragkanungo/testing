@@ -62,5 +62,4 @@ class Calculation::CommandParser
 
   end
 
-
 end
