@@ -14,8 +14,7 @@ describe Calculation::History do
       expect(history.execute(2)).to eq(0.0)
     end
 
-
-    it "with argument 2 should return 0.0 " do
+    it "with argument 2 should return -4.9 " do
       calculator = Calculation::Calculator.new(50.0)
       Calculation::Add.new(calculator,10).execute
       Calculation::Divide.new(calculator,10).execute
