@@ -32,7 +32,11 @@ class Calculation::Calculator
   end
 
   def sqr
-    @accumulator = Math.sqrt(@accumulator) if @accumulator >= 0
+    if @accumulator >= 0
+      @accumulator = Math.sqrt(@accumulator) if @accumulator >= 0
+    else
+      "Invalid Command"
+    end
   end
 
   def cube
