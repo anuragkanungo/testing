@@ -1,0 +1,7 @@
+require_relative '../lib/gui'
+
+canvas = Gui::Canvas.new
+
+interface = Gui::Interface.new(100,100,20,20,Color.black)
+
+canvas.add(interface)
