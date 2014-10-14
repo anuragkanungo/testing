@@ -28,7 +28,7 @@ describe Gui::Button do
   end
 
   it "logs the button click" do
-    expect(button.handle_click(120,120)).to eq("clicked at 120,120")
+    expect(button.handle_click(120,120)).to eq(true)
   end
 
 end

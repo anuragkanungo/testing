@@ -17,9 +17,11 @@ class Gui::Button
   end
 
   def handle_click(x,y)
-    if @body.inside?(x,y)
-      p "clicked at #{x},#{y}"
-    end
+    @body.inside?(x,y)
+  end
+
+  def get_text
+    @text
   end
 
 end

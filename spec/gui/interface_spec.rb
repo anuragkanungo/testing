@@ -71,4 +71,10 @@ describe Gui::Interface do
     interface.draw(graphics)
   end
 
+  it "handles click" do
+    interface = Gui::Interface.new(100,100,20,20,Color.black)
+    interface.add_buttons
+    expect(interface.handle_click(130,110)).to eq("2")
+  end
+
 end
