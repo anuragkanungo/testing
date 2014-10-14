@@ -6,9 +6,11 @@ class Calculation::Console
   end
 
   def start
-    loop do
-     puts @parser.parse(STDIN.gets)
-    end
+    loop { run }
+  end
+
+  def run
+    puts @parser.parse(STDIN.gets)
   end
 
 end

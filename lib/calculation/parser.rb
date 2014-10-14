@@ -9,24 +9,21 @@ class Calculation::Parser
   def parse(input)
     args = input.split
     case args[0]
-      when "add" then command = Calculation::Add.new(@calculator,args[1].to_f)
-      when "subtract" then command = Calculation::Subtract.new(@calculator,args[1].to_f)
-      when "multiply" then command = Calculation::Multiply.new(@calculator,args[1].to_f)
-      when "divide" then command = Calculation::Divide.new(@calculator,args[1].to_f)
-      when "cancel" then command = Calculation::Cancel.new(@calculator)
-      when "abs" then command = Calculation::Abs.new(@calculator)
-      when "neg" then command = Calculation::Neg.new(@calculator)
-      when "sqr" then command = Calculation::Sqr.new(@calculator)
-      when "square" then command = Calculation::Square.new(@calculator)
-      when "cube" then command = Calculation::Cube.new(@calculator)
-      when "cubert" then command = Calculation::Cubert.new(@calculator)
-      when "repeat" then return @history.execute(args[1].to_i)
+      when "add" then Calculation::Add.new(@calculator,args[1].to_f,@history).execute
+      when "subtract" then Calculation::Subtract.new(@calculator,args[1].to_f,@history).execute
+      when "multiply" then Calculation::Multiply.new(@calculator,args[1].to_f,@history).execute
+      when "divide" then Calculation::Divide.new(@calculator,args[1].to_f,@history).execute
+      when "cancel" then Calculation::Cancel.new(@calculator).execute
+      when "abs" then Calculation::Abs.new(@calculator,@history).execute
+      when "neg" then Calculation::Neg.new(@calculator,@history).execute
+      when "sqr" then Calculation::Sqr.new(@calculator,@history).execute
+      when "square" then Calculation::Square.new(@calculator,@history).execute
+      when "cube" then Calculation::Cube.new(@calculator,@history).execute
+      when "cubert" then Calculation::Cubert.new(@calculator,@history).execute
+      when "repeat" then Calculation::Repeat.new(@calculator,args[1].to_i,@history).execute
       when "exit" then exit
-      else return "Invalid Command"
+      else Calculation::InvalidCommand.new.execute
     end
-
-    @history.insert(command)
-    command.execute
   end
 
 end

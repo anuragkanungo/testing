@@ -1,19 +1,30 @@
-#maintais command history
+#stores command history
 class Calculation::History
 
   def initialize
-    @history = []
+    @store = []
   end
 
   def insert(input)
-    @history << input
+    @store << input
   end
 
-  def execute(number)
-    if number <= @history.length
-      temp = @history[(-number)..-1]
-      temp.inject(0) { |result,x| x.execute}
+  def last(number)
+    if within_bounds?(number) && positive?(number)
+      @store.slice((-number),number)
+    else
+      []
     end
+  end
+
+  private
+
+  def within_bounds?(number)
+    number <= @store.length
+  end
+
+  def positive?(number)
+    number > 0
   end
 
 end
