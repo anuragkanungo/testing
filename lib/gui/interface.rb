@@ -14,6 +14,8 @@ class Gui::Interface
     button1.draw(graphics)
     button2 = Gui::Button.new(@x+@width,@y,@width,@height,@color,"2")
     button2.draw(graphics)
+    button3 = Gui::Button.new(@x+(2*@width),@y,@width,@height,@color,"3")
+    button3.draw(graphics)
   end
 
 end
