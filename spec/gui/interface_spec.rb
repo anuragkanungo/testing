@@ -26,6 +26,27 @@ describe Gui::Interface do
     expect(graphics).to receive(:draw_line).with(160,80,140,80)
     expect(graphics).to receive(:drawString).with("3",145,95)
 
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(100,120,120,120)
+    expect(graphics).to receive(:draw_line).with(100,120,100,100)
+    expect(graphics).to receive(:draw_line).with(120,100,120,120)
+    expect(graphics).to receive(:draw_line).with(120,100,100,100)
+    expect(graphics).to receive(:drawString).with("4",105,115)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(120,120,140,120)
+    expect(graphics).to receive(:draw_line).with(120,120,120,100)
+    expect(graphics).to receive(:draw_line).with(140,100,140,120)
+    expect(graphics).to receive(:draw_line).with(140,100,120,100)
+    expect(graphics).to receive(:drawString).with("5",125,115)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(140,120,160,120)
+    expect(graphics).to receive(:draw_line).with(140,120,140,100)
+    expect(graphics).to receive(:draw_line).with(160,100,160,120)
+    expect(graphics).to receive(:draw_line).with(160,100,140,100)
+    expect(graphics).to receive(:drawString).with("6",145,115)
+
     interface.draw(graphics)
   end
 
