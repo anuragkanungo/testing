@@ -50,6 +50,8 @@ class Gui::Interface
     @buttons.each do |button|
       button.draw(graphics)
     end
+    text_area = Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,"0")
+    text_area.draw(graphics)
   end
 
   def handle_click(x,y)

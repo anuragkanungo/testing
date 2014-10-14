@@ -117,6 +117,13 @@ describe Gui::Interface do
     expect(graphics).to receive(:draw_line).with(180,140,160,140)
     expect(graphics).to receive(:drawString).with("/",165,155)
 
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(100,80,180,80)
+    expect(graphics).to receive(:draw_line).with(100,80,100,60)
+    expect(graphics).to receive(:draw_line).with(180,60,180,80)
+    expect(graphics).to receive(:draw_line).with(180,60,100,60)
+    expect(graphics).to receive(:drawString).with("0",105,75)
+
     interface.draw(graphics)
   end
 
