@@ -29,6 +29,12 @@ class Gui::Interface
     @buttons << button8
     button9 = Gui::Button.new(@x+(2*@width),@y+(2*@height),@width,@height,@color,"9")
     @buttons << button9
+    button_point = Gui::Button.new(@x,@y+(3*@height),@width,@height,@color,".")
+    @buttons << button_point
+    button0 = Gui::Button.new(@x+@width,@y+(3*@height),@width,@height,@color,"0")
+    @buttons << button0
+    button_equal = Gui::Button.new(@x+(2*@width),@y+(3*@height),@width,@height,@color,"=")
+    @buttons << button_equal
   end
 
   def draw(graphics)
@@ -43,5 +49,4 @@ class Gui::Interface
        button.get_text if button.handle_click(x,y)
     end.compact.first
   end
-
 end
