@@ -15,3 +15,5 @@ require_relative 'gui/line'
 require_relative 'gui/rectangle'
 require_relative 'gui/button'
 require_relative 'gui/text_area'
+require_relative 'gui/interface'
+
