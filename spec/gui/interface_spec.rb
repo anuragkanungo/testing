@@ -89,6 +89,34 @@ describe Gui::Interface do
     expect(graphics).to receive(:draw_line).with(160,140,140,140)
     expect(graphics).to receive(:drawString).with("=",145,155)
 
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(160,100,180,100)
+    expect(graphics).to receive(:draw_line).with(160,100,160,80)
+    expect(graphics).to receive(:draw_line).with(180,80,180,100)
+    expect(graphics).to receive(:draw_line).with(180,80,160,80)
+    expect(graphics).to receive(:drawString).with("+",165,95)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(160,120,180,120)
+    expect(graphics).to receive(:draw_line).with(160,120,160,100)
+    expect(graphics).to receive(:draw_line).with(180,100,180,120)
+    expect(graphics).to receive(:draw_line).with(180,100,160,100)
+    expect(graphics).to receive(:drawString).with("-",165,115)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(160,140,180,140)
+    expect(graphics).to receive(:draw_line).with(160,140,160,120)
+    expect(graphics).to receive(:draw_line).with(180,120,180,140)
+    expect(graphics).to receive(:draw_line).with(180,120,160,120)
+    expect(graphics).to receive(:drawString).with("*",165,135)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(160,160,180,160)
+    expect(graphics).to receive(:draw_line).with(160,160,160,140)
+    expect(graphics).to receive(:draw_line).with(180,140,180,160)
+    expect(graphics).to receive(:draw_line).with(180,140,160,140)
+    expect(graphics).to receive(:drawString).with("/",165,155)
+
     interface.draw(graphics)
   end
 

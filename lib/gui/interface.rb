@@ -35,6 +35,14 @@ class Gui::Interface
     @buttons << button0
     button_equal = Gui::Button.new(@x+(2*@width),@y+(3*@height),@width,@height,@color,"=")
     @buttons << button_equal
+    button_add = Gui::Button.new(@x+(3*@width),@y,@width,@height,@color,"+")
+    @buttons << button_add
+    button_sub = Gui::Button.new(@x+(3*@width),@y+@height,@width,@height,@color,"-")
+    @buttons << button_sub
+    button_mul = Gui::Button.new(@x+(3*@width),@y+(2*@height),@width,@height,@color,"*")
+    @buttons << button_mul
+    button_equal = Gui::Button.new(@x+(3*@width),@y+(3*@height),@width,@height,@color,"/")
+    @buttons << button_equal
   end
 
   def draw(graphics)
