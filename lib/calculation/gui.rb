@@ -1,5 +1,5 @@
-#command line IO
-class Calculation::Console
+#gui for calculator
+class Calculation::Gui
 
   def initialize(parser)
     @parser = parser
@@ -10,7 +10,7 @@ class Calculation::Console
   end
 
   def run
-    puts @parser.parse(STDIN.gets)
+   @parser.parse(STDIN.gets)
   end
 
 end

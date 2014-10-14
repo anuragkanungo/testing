@@ -1,7 +1,7 @@
 module Calculation
 end
 
-require_relative 'calculation/console'
+require_relative 'calculation/gui'
 require_relative 'calculation/add'
 require_relative 'calculation/subtract'
 require_relative 'calculation/multiply'
