@@ -149,7 +149,7 @@ describe Gui::Window do
   it "handles click" do
     interface = Gui::Window.new(100,100,20,20,Color.black,parser)
     interface.add_buttons
-    expect(interface.handle_click(130,110)).to eq("2")
+    expect(interface.handle_click(130,110)).to eq("5")
   end
 
 end

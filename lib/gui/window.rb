@@ -59,8 +59,9 @@ class Gui::Window
     self.add_buttons
     @buttons.each do |button|
       button.draw(graphics)
+      Gui::Rectangle.new(button.x1 - 2,button.y1 - 2,button.width,button.height,@color).draw(graphics)
     end
-    Gui::Rectangle.new(@animated_x,@animated_y,@animates_width,@animated_height,@color).draw(graphics)
+    Gui::Rectangle.new(@animated_x,@animated_y,@animates_width,@animated_height,Color.red).draw(graphics)
     Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@text).draw(graphics)
   end
 
@@ -107,10 +108,13 @@ class Gui::Window
               button if button.handle_click(x,y)
     end.compact.first
 
-    self.animate(button)
-    response = button.text
-    self.window_parser(response)
+    unless button.nil?
+      self.animate(button)
+      response = button.text
+      self.window_parser(response)
 
-    response
+      response
+    end
+
   end
 end
