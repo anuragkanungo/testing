@@ -7,14 +7,11 @@ class Gui::Window
     @width = width
     @height = height
     @color = color
-    @text = "0"
+    @string = "0"
     @parser = parser
     @operation = ""
     @value = ""
-    @animated_x = 0
-    @animated_y = 0
-    @animated_width = 0
-    @animated_height = 0
+    @button_clicked = nil
   end
 
   def add_buttons
@@ -59,28 +56,20 @@ class Gui::Window
     self.add_buttons
     @buttons.each do |button|
       button.draw(graphics)
-      Gui::Rectangle.new(button.x1 - 2,button.y1 - 2,button.width,button.height,@color).draw(graphics)
     end
-    Gui::Rectangle.new(@animated_x,@animated_y,@animated_width,@animated_height,Color.red).draw(graphics)
-    Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@text).draw(graphics)
+    Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@string).draw(graphics)
+    @button_clicked.animate.draw(graphics) unless @button_clicked.nil?
   end
 
-  def animate(button)
-    @animated_x = button.x1 - 1
-    @animated_y = button.y1 - 1
-    @animated_width = button.width
-    @animated_height = button.height
-  end
 
   def handle_click(x,y)
-    button = @buttons.map do |button|
+    @button_clicked = @buttons.map do |button|
               button if button.handle_click(x,y)
     end.compact.first
 
-    unless button.nil?
-      self.animate(button)
-      @operation, @value, @text = button.execute(@parser,@operation,@value,@text)
-      button.text
+    unless @button_clicked.nil?
+      @operation, @value, @string = @button_clicked.execute(@parser,@operation,@value,@string)
+      @button_clicked.text
     end
 
   end

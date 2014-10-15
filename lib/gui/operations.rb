@@ -1,12 +1,12 @@
 #buttons with operations
 class Gui::Operations < Gui::Button
 
-  def calculate(parser,operation,value,text)
+  def calculate(parser,operation,value,string)
     unless operation.empty? || value.empty?
-      text =  parser.parse("#{operation} #{value}").to_s
+      string =  parser.parse("#{operation} #{value}").to_s
       value = ""
     end
-    [value,text]
+    [value,string]
   end
 
   def execute(parser,operation,value,text)

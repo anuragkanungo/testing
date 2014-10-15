@@ -1,11 +1,11 @@
 #buttons with digits
 class Gui::Digits < Gui::Button
 
-  def execute(parser,operation,value,text)
+  def execute(parser,operation,value,string)
     unless operation.empty?
-     text = value << @text
+     string = value << @text
     end
-    [operation,value,text]
+    [operation,value,string]
   end
 
 end
