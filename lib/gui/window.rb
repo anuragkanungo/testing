@@ -13,7 +13,7 @@ class Gui::Window
     @value = ""
     @animated_x = 0
     @animated_y = 0
-    @animates_width = 0
+    @animated_width = 0
     @animated_height = 0
   end
 
@@ -61,47 +61,16 @@ class Gui::Window
       button.draw(graphics)
       Gui::Rectangle.new(button.x1 - 2,button.y1 - 2,button.width,button.height,@color).draw(graphics)
     end
-    Gui::Rectangle.new(@animated_x,@animated_y,@animates_width,@animated_height,Color.red).draw(graphics)
+    Gui::Rectangle.new(@animated_x,@animated_y,@animated_width,@animated_height,Color.red).draw(graphics)
     Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@text).draw(graphics)
   end
 
   def animate(button)
     @animated_x = button.x1 - 1
     @animated_y = button.y1 - 1
-    @animates_width = button.width
+    @animated_width = button.width
     @animated_height = button.height
   end
-
-  # def calculate
-  #   unless @operation.empty? || @value.empty?
-  #     @text =  @parser.parse("#{@operation} #{@value}").to_s
-  #     @value = ""
-  #   end
-  # end
-
-
-  # def window_parser(response)
-  #   if response == "c"
-  #     @text =  @parser.parse("cancel").to_s
-  #   elsif response == "+"
-  #     self.calculate
-  #     @operation = "add"
-  #   elsif response == "-"
-  #     self.calculate
-  #     @operation = "subtract"
-  #   elsif response == "*"
-  #     self.calculate
-  #     @operation = "multiply"
-  #   elsif response == "/"
-  #     self.calculate
-  #     @operation = "divide"
-  #   elsif response == "="
-  #     self.calculate
-  #     @operation = ""
-  #   else
-  #     @text = @value << response unless @operation.empty?
-  #   end
-  # end
 
   def handle_click(x,y)
     button = @buttons.map do |button|
@@ -111,7 +80,7 @@ class Gui::Window
     unless button.nil?
       self.animate(button)
       response = button.text
-      @operation,@value,@text = button.execute(response,@parser,@operation,@value,@text)
+      @operation, @value, @text = button.execute(response,@parser,@operation,@value,@text)
       response
     end
 
