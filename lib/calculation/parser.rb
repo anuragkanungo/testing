@@ -9,11 +9,11 @@ class Calculation::Parser
   def parse(input)
     args = input.split
     case args[0]
-      when "add" then Calculation::Add.new(@calculator,args[1].to_f,@history).execute
-      when "subtract" then Calculation::Subtract.new(@calculator,args[1].to_f,@history).execute
-      when "multiply" then Calculation::Multiply.new(@calculator,args[1].to_f,@history).execute
-      when "divide" then Calculation::Divide.new(@calculator,args[1].to_f,@history).execute
-      when "cancel" then Calculation::Cancel.new(@calculator).execute
+      when "+" then Calculation::Add.new(@calculator,args[1].to_f,@history).execute
+      when "-" then Calculation::Subtract.new(@calculator,args[1].to_f,@history).execute
+      when "*" then Calculation::Multiply.new(@calculator,args[1].to_f,@history).execute
+      when "/" then Calculation::Divide.new(@calculator,args[1].to_f,@history).execute
+      when "c" then Calculation::Cancel.new(@calculator).execute
       when "abs" then Calculation::Abs.new(@calculator,@history).execute
       when "neg" then Calculation::Neg.new(@calculator,@history).execute
       when "sqr" then Calculation::Sqr.new(@calculator,@history).execute

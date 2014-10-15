@@ -2,7 +2,7 @@
 class Gui::Operations < Gui::Button
 
   def calculate(parser,operation,value,string)
-    unless operation.empty? || value.empty? || operation == "cancel"
+    unless operation.empty? || value.empty?
       string =  parser.parse("#{operation} #{value}").to_s
       value = ""
     end
@@ -10,21 +10,12 @@ class Gui::Operations < Gui::Button
   end
 
   def execute(parser,operation,value,string)
-    value,string = self.calculate(parser,operation,value,string)
-
     if @text == "c"
-      operation = "cancel"
-      string = parser.parse("#{operation}").to_s
-    elsif @text == "+"
-      operation = "add"
-    elsif @text == "-"
-      operation = "subtract"
-    elsif @text == "*"
-      operation = "multiply"
-    elsif @text == "/"
-      operation = "divide"
-    elsif @text == "="
+      string = parser.parse("#{@text}").to_s
       operation = ""
+    else
+      value,string = self.calculate(parser,operation,value,string)
+      operation = @text
     end
 
     [operation,value,string]
