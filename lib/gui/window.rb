@@ -12,6 +12,7 @@ class Gui::Window
     @operation = ""
     @value = ""
     @button_clicked = nil
+    @text_area = Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@string)
   end
 
   def add_buttons
@@ -57,7 +58,7 @@ class Gui::Window
     @buttons.each do |button|
       button.draw(graphics)
     end
-    Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@string).draw(graphics)
+    @text_area.update(@string).draw(graphics)
     @button_clicked.animate.draw(graphics) unless @button_clicked.nil?
   end
 

@@ -16,4 +16,10 @@ class Gui::TextArea
     graphics.drawString(@text,@x+5,@y-5)
   end
 
+  def update(string)
+    @text = string
+    self
+  end
+
+
 end

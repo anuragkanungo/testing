@@ -9,8 +9,9 @@ class Gui::Operations < Gui::Button
     [value,string]
   end
 
-  def execute(parser,operation,value,text)
-    result = self.calculate(parser,operation,value,text)
+  def execute(parser,operation,value,string)
+    value,string = self.calculate(parser,operation,value,string)
+
     if @text == "c"
       operation = "cancel"
     elsif @text == "+"
@@ -25,7 +26,7 @@ class Gui::Operations < Gui::Button
       operation = ""
     end
 
-    [operation] + result
+    [operation,value,string]
   end
 
 
