@@ -19,8 +19,8 @@ class Gui::Button
     Gui::Rectangle.new(@x1 - 2,@y1 - 2,@width,@height,@color).draw(graphics)
   end
 
-  def animate
-    Gui::Rectangle.new(@x1-1,@y1-1,@width,@height,Color.red)
+  def animate(graphics)
+    Gui::Rectangle.new(@x1-1,@y1-1,@width,@height,Color.red).draw(graphics)
   end
 
   def handle_click(x,y)

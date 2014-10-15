@@ -58,8 +58,8 @@ class Gui::Window
     @buttons.each do |button|
       button.draw(graphics)
     end
-    @text_area.update(@string).draw(graphics)
-    @button_clicked.animate.draw(graphics) unless @button_clicked.nil?
+    @text_area.update(@string,graphics)
+    @button_clicked.animate(graphics) unless @button_clicked.nil?
   end
 
 
@@ -67,11 +67,6 @@ class Gui::Window
     @button_clicked = @buttons.map do |button|
               button if button.handle_click(x,y)
     end.compact.first
-
-    unless @button_clicked.nil?
-      @operation, @value, @string = @button_clicked.execute(@parser,@operation,@value,@string)
-      @button_clicked.text
-    end
-
+    @operation, @value, @string = @button_clicked.execute(@parser,@operation,@value,@string) unless @button_clicked.nil?
   end
 end
