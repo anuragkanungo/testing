@@ -13,10 +13,10 @@ class Gui::Window
     @value = ""
     @button_clicked = nil
     @text_area = Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@string)
+    @buttons = []
   end
 
   def add_buttons
-    @buttons = []
     button1 = Gui::Digits.new(@x,@y,@width,@height,@color,"1")
     @buttons << button1
     button2 = Gui::Digits.new(@x+@width,@y,@width,@height,@color,"2")
