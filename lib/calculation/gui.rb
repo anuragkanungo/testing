@@ -1,8 +1,9 @@
-#gui for calculator
-class Calculation::Gui
+#console for calculator
+class Calculation::Console
 
-  def initialize(parser)
+  def initialize(parser,window)
     @parser = parser
+    @window = window
   end
 
   def start

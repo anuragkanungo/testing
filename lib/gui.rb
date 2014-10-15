@@ -1,8 +1,7 @@
 module Gui
 end
 
-include Java
-
+require 'java'
 import java.awt.Color
 import java.awt.RenderingHints
 import java.awt.geom.Ellipse2D
@@ -15,5 +14,5 @@ require_relative 'gui/line'
 require_relative 'gui/rectangle'
 require_relative 'gui/button'
 require_relative 'gui/text_area'
-require_relative 'gui/interface'
+require_relative 'gui/window'
 

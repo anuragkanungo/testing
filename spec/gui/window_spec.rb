@@ -1,10 +1,16 @@
 require_relative '../gui_spec_helper'
+require_relative '../spec_helper'
 
-describe Gui::Interface do
+describe Gui::Window do
 
-  it "contains button with text 1-9" do
+  calculator = Calculation::Calculator.new
+  history = Calculation::History.new
+  parser = Calculation::Parser.new(calculator,history)
+
+  it "contains button with text 0-9 and operations" do
+
     graphics = double()
-    interface = Gui::Interface.new(100,100,20,20,Color.black)
+    interface = Gui::Window.new(100,100,20,20,Color.black,parser)
     expect(graphics).to receive(:setColor).with(Color.black)
     expect(graphics).to receive(:draw_line).with(100,100,120,100)
     expect(graphics).to receive(:draw_line).with(100,100,100,80)
@@ -118,9 +124,22 @@ describe Gui::Interface do
     expect(graphics).to receive(:drawString).with("/",165,155)
 
     expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(180,160,200,160)
+    expect(graphics).to receive(:draw_line).with(180,160,180,140)
+    expect(graphics).to receive(:draw_line).with(200,140,200,160)
+    expect(graphics).to receive(:draw_line).with(200,140,180,140)
+    expect(graphics).to receive(:drawString).with("c",185,155)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(0,0,0,0)
+    expect(graphics).to receive(:draw_line).with(0,0,0,0)
+    expect(graphics).to receive(:draw_line).with(0,0,0,0)
+    expect(graphics).to receive(:draw_line).with(0,0,0,0)
+
+    expect(graphics).to receive(:setColor).with(Color.black)
+    expect(graphics).to receive(:draw_line).with(180,60,180,80)
     expect(graphics).to receive(:draw_line).with(100,80,180,80)
     expect(graphics).to receive(:draw_line).with(100,80,100,60)
-    expect(graphics).to receive(:draw_line).with(180,60,180,80)
     expect(graphics).to receive(:draw_line).with(180,60,100,60)
     expect(graphics).to receive(:drawString).with("0",105,75)
 
@@ -128,7 +147,7 @@ describe Gui::Interface do
   end
 
   it "handles click" do
-    interface = Gui::Interface.new(100,100,20,20,Color.black)
+    interface = Gui::Window.new(100,100,20,20,Color.black,parser)
     interface.add_buttons
     expect(interface.handle_click(130,110)).to eq("2")
   end

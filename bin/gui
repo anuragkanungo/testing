@@ -1,7 +1,11 @@
 require_relative '../lib/gui'
+require_relative '../lib/calculation'
+
+calculator = Calculation::Calculator.new
+history = Calculation::History.new
+parser = Calculation::Parser.new(calculator,history)
 
 canvas = Gui::Canvas.new
+window = Gui::Window.new(200,200,60,60,Color.black,parser)
 
-interface = Gui::Interface.new(100,100,40,40,Color.black)
-
-canvas.add(interface)
+canvas.add(window)

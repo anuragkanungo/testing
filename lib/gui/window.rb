@@ -1,12 +1,20 @@
 #interface for calculator
-class Gui::Interface
+class Gui::Window
 
-  def initialize(x,y,width,height,color)
+  def initialize(x,y,width,height,color,parser)
     @x = x
     @y = y
     @width = width
     @height = height
     @color = color
+    @text = "0"
+    @parser = parser
+    @operation = ""
+    @value = ""
+    @animated_x = 0
+    @animated_y = 0
+    @animates_width = 0
+    @animated_height = 0
   end
 
   def add_buttons
@@ -41,8 +49,10 @@ class Gui::Interface
     @buttons << button_sub
     button_mul = Gui::Button.new(@x+(3*@width),@y+(2*@height),@width,@height,@color,"*")
     @buttons << button_mul
-    button_equal = Gui::Button.new(@x+(3*@width),@y+(3*@height),@width,@height,@color,"/")
-    @buttons << button_equal
+    button_divide = Gui::Button.new(@x+(3*@width),@y+(3*@height),@width,@height,@color,"/")
+    @buttons << button_divide
+    button_cancel = Gui::Button.new(@x+(4*@width),@y+(3*@height),@width,@height,@color,"c")
+    @buttons << button_cancel
   end
 
   def draw(graphics)
@@ -50,13 +60,57 @@ class Gui::Interface
     @buttons.each do |button|
       button.draw(graphics)
     end
-    text_area = Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,"0")
-    text_area.draw(graphics)
+    Gui::Rectangle.new(@animated_x,@animated_y,@animates_width,@animated_height,@color).draw(graphics)
+    Gui::TextArea.new(@x,@y-@height,@width*4,@height,@color,@text).draw(graphics)
+  end
+
+  def animate(button)
+    @animated_x = button.x1 - 1
+    @animated_y = button.y1 - 1
+    @animates_width = button.width
+    @animated_height = button.height
+  end
+
+  def calculate
+    unless @operation.empty?
+      @text =  @parser.parse("#{@operation} #{@value}").to_s
+      @value = ""
+    end
+  end
+
+
+  def window_parser(response)
+    if response == "c"
+      @text =  @parser.parse("cancel").to_s
+    elsif response == "+"
+      self.calculate
+      @operation = "add"
+    elsif response == "-"
+      self.calculate
+      @operation = "subtract"
+    elsif response == "*"
+      self.calculate
+      @operation = "multiply"
+    elsif response == "/"
+      self.calculate
+      @operation = "divide"
+    elsif response == "="
+      self.calculate
+      @operation = ""
+    else
+      @text = @value << response unless @operation.empty?
+    end
   end
 
   def handle_click(x,y)
-    @buttons.map do |button|
-       button.get_text if button.handle_click(x,y)
+    button = @buttons.map do |button|
+              button if button.handle_click(x,y)
     end.compact.first
+
+    self.animate(button)
+    response = button.text
+    self.window_parser(response)
+
+    response
   end
 end

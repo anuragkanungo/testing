@@ -3,6 +3,6 @@ require_relative '../lib/calculation'
 calculator = Calculation::Calculator.new
 history = Calculation::History.new
 parser = Calculation::Parser.new(calculator,history)
-gui = Calculation::Gui.new(parser)
+console = Calculation::Console.new(parser)
 
-gui.start
+console.start

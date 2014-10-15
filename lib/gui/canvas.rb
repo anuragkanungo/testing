@@ -33,6 +33,7 @@ class Gui::Canvas < JPanel
     @shapes.each do |shape|
       shape.handle_click(event.x,event.y) if shape.respond_to?(:handle_click)
     end
+    @frame.repaint
   end
 
   def mouseEntered(javaEvent)  end
