@@ -79,9 +79,8 @@ class Gui::Window
 
     unless button.nil?
       self.animate(button)
-      response = button.text
-      @operation, @value, @text = button.execute(response,@parser,@operation,@value,@text)
-      response
+      @operation, @value, @text = button.execute(@parser,@operation,@value,@text)
+      button.text
     end
 
   end

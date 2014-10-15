@@ -9,19 +9,19 @@ class Gui::Operations < Gui::Button
     [value,text]
   end
 
-  def execute(response,parser,operation,value,text)
+  def execute(parser,operation,value,text)
     result = self.calculate(parser,operation,value,text)
-    if response == "c"
+    if @text == "c"
       operation = "cancel"
-    elsif response == "+"
+    elsif @text == "+"
       operation = "add"
-    elsif response == "-"
+    elsif @text == "-"
       operation = "subtract"
-    elsif response == "*"
+    elsif @text == "*"
       operation = "multiply"
-    elsif response == "/"
+    elsif @text == "/"
       operation = "divide"
-    elsif response == "="
+    elsif @text == "="
       operation = ""
     end
 
