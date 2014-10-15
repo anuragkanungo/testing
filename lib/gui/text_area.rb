@@ -4,11 +4,11 @@ class Gui::TextArea
   def initialize(x,y,width,height,color,text)
     @x = x
     @y = y
-    @width = width
-    @height = height
+    @width = width * 0.95
+    @height = height * 0.8
     @color = color
     @text = text
-    @body = Gui::Rectangle.new(x,y,width,height,color)
+    @body = Gui::Rectangle.new(@x,@y,@width,@height,@color)
   end
 
   def draw(graphics)

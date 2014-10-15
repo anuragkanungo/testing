@@ -73,7 +73,7 @@ class Gui::Window
   end
 
   def calculate
-    unless @operation.empty?
+    unless @operation.empty? || @value.empty?
       @text =  @parser.parse("#{@operation} #{@value}").to_s
       @value = ""
     end
