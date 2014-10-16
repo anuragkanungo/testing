@@ -6,8 +6,8 @@ class Gui::Button
   def initialize(x1,y1,width,height,color,text)
     @x1 = x1
     @y1 = y1
-    @width = width*0.8
-    @height = height*0.8
+    @width = width
+    @height = height
     @color = color
     @text = text
     @body = Gui::Rectangle.new(@x1,@y1,@width,@height,@color)
