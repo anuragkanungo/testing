@@ -1,9 +1,9 @@
 require_relative "../gui_spec_helper"
 
 describe Gui::Digits do
-
-  button = Gui::Digits.new(100,100,50,30,Color.red,"test")
-  button1 = Gui::Digits.new(200,200,100,150,Color.blue,"other")
+  processor = Gui::Processor.new("")
+  button = Gui::Digits.new(100,100,50,30,Color.red,"test",processor)
+  button1 = Gui::Digits.new(200,200,100,150,Color.blue,"other",processor)
 
   it "draws the button" do
     graphics = double()

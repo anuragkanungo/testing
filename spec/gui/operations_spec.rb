@@ -1,9 +1,14 @@
 require_relative "../gui_spec_helper"
+require_relative "../spec_helper"
 
 describe Gui::Operations do
 
-  button = Gui::Operations.new(100,100,50,30,Color.red,"test")
-  button1 = Gui::Operations.new(200,200,100,150,Color.blue,"other")
+  calculator = Calculation::Calculator.new
+  history = Calculation::History.new
+  parser = Calculation::Parser.new(calculator,history)
+  processor = Gui::Processor.new("")
+  button = Gui::Operations.new(100,100,50,30,Color.red,"test",parser,processor)
+  button1 = Gui::Operations.new(200,200,100,150,Color.blue,"other",parser,processor)
 
   it "draws the button" do
     graphics = double()

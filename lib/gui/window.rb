@@ -7,7 +7,7 @@ class Gui::Window
     @width = width
     @height = height
     @padded_width = width * 0.8
-    @padded_width = height * 0.8
+    @padded_height = height * 0.8
     @color = color
     @string = "0"
     @parser = parser
@@ -18,39 +18,39 @@ class Gui::Window
   end
 
   def add_buttons
-    button1 = Gui::Digits.new(@x,@y,@padded_width,@padded_width,@color,"1",@processor)
+    button1 = Gui::Digits.new(@x,@y,@padded_width,@padded_height,@color,"1",@processor)
     @buttons << button1
-    button2 = Gui::Digits.new(@x+@width,@y,@padded_width,@padded_width,@color,"2",@processor)
+    button2 = Gui::Digits.new(@x+@width,@y,@padded_width,@padded_height,@color,"2",@processor)
     @buttons << button2
-    button3 = Gui::Digits.new(@x+(2*@width),@y,@padded_width,@padded_width,@color,"3",@processor)
+    button3 = Gui::Digits.new(@x+(2*@width),@y,@padded_width,@padded_height,@color,"3",@processor)
     @buttons << button3
-    button4 = Gui::Digits.new(@x,@y+@height,@padded_width,@padded_width,@color,"4",@processor)
+    button4 = Gui::Digits.new(@x,@y+@height,@padded_width,@padded_height,@color,"4",@processor)
     @buttons << button4
-    button5 = Gui::Digits.new(@x+@width,@y+@height,@padded_width,@padded_width,@color,"5",@processor)
+    button5 = Gui::Digits.new(@x+@width,@y+@height,@padded_width,@padded_height,@color,"5",@processor)
     @buttons << button5
-    button6 = Gui::Digits.new(@x+(2*@width),@y+@height,@padded_width,@padded_width,@color,"6",@processor)
+    button6 = Gui::Digits.new(@x+(2*@width),@y+@height,@padded_width,@padded_height,@color,"6",@processor)
     @buttons << button6
-    button7 = Gui::Digits.new(@x,@y+(2*@height),@padded_width,@padded_width,@color,"7",@processor)
+    button7 = Gui::Digits.new(@x,@y+(2*@height),@padded_width,@padded_height,@color,"7",@processor)
     @buttons << button7
-    button8 = Gui::Digits.new(@x+@width,@y+(2*@height),@padded_width,@padded_width,@color,"8",@processor)
+    button8 = Gui::Digits.new(@x+@width,@y+(2*@height),@padded_width,@padded_height,@color,"8",@processor)
     @buttons << button8
-    button9 = Gui::Digits.new(@x+(2*@width),@y+(2*@height),@padded_width,@padded_width,@color,"9",@processor)
+    button9 = Gui::Digits.new(@x+(2*@width),@y+(2*@height),@padded_width,@padded_height,@color,"9",@processor)
     @buttons << button9
-    button_point = Gui::Digits.new(@x,@y+(3*@height),@padded_width,@padded_width,@color,".",@processor)
+    button_point = Gui::Digits.new(@x,@y+(3*@height),@padded_width,@padded_height,@color,".",@processor)
     @buttons << button_point
-    button0 = Gui::Digits.new(@x+@width,@y+(3*@height),@padded_width,@padded_width,@color,"0",@processor)
+    button0 = Gui::Digits.new(@x+@width,@y+(3*@height),@padded_width,@padded_height,@color,"0",@processor)
     @buttons << button0
-    button_equal = Gui::Operations.new(@x+(2*@width),@y+(3*@height),@padded_width,@padded_width,@color,"=",@parser,@processor)
+    button_equal = Gui::Operations.new(@x+(2*@width),@y+(3*@height),@padded_width,@padded_height,@color,"=",@parser,@processor)
     @buttons << button_equal
-    button_add = Gui::Operations.new(@x+(3*@width),@y,@padded_width,@padded_width,@color,"+",@parser,@processor)
+    button_add = Gui::Operations.new(@x+(3*@width),@y,@padded_width,@padded_height,@color,"+",@parser,@processor)
     @buttons << button_add
-    button_sub = Gui::Operations.new(@x+(3*@width),@y+@height,@padded_width,@padded_width,@color,"-",@parser,@processor)
+    button_sub = Gui::Operations.new(@x+(3*@width),@y+@height,@padded_width,@padded_height,@color,"-",@parser,@processor)
     @buttons << button_sub
-    button_mul = Gui::Operations.new(@x+(3*@width),@y+(2*@height),@padded_width,@padded_width,@color,"*",@parser,@processor)
+    button_mul = Gui::Operations.new(@x+(3*@width),@y+(2*@height),@padded_width,@padded_height,@color,"*",@parser,@processor)
     @buttons << button_mul
-    button_divide = Gui::Operations.new(@x+(3*@width),@y+(3*@height),@padded_width,@padded_width,@color,"/",@parser,@processor)
+    button_divide = Gui::Operations.new(@x+(3*@width),@y+(3*@height),@padded_width,@padded_height,@color,"/",@parser,@processor)
     @buttons << button_divide
-    button_cancel = Gui::Operations.new(@x+(4*@width),@y+(3*@height),@padded_width,@padded_width,@color,"c",@parser,@processor)
+    button_cancel = Gui::Operations.new(@x+(4*@width),@y+(3*@height),@padded_width,@padded_height,@color,"c",@parser,@processor)
     @buttons << button_cancel
   end
 
