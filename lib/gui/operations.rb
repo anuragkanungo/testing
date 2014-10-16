@@ -1,25 +1,28 @@
 #buttons with operations
-class Gui::Operations < Gui::Button
+class Gui::Operations
 
-  def calculate(parser,operation,value,string)
-    unless operation.empty? || value.empty?
-      string =  parser.parse("#{operation} #{value}").to_s
-      value = ""
-    end
-    [value,string]
-  end
-
-  def execute(parser,operation,value,string)
-    if @text == "c"
-      string = parser.parse("#{@text}").to_s
-      operation = ""
-    else
-      value,string = self.calculate(parser,operation,value,string)
-      operation = @text
+    def initialize(x1,y1,width,height,color,text,parser,processor)
+      @text = text
+      @parser = parser
+      @processor = processor
+      @button = Gui::Button.new(x1,y1,width,height,color,text)
     end
 
-    [operation,value,string]
-  end
+    def execute
+      @processor.execute_operation(@parser,@text)
+    end
+
+    def draw(graphics)
+      @button.draw(graphics)
+    end
+
+    def animate(graphics)
+      @button.animate(graphics)
+    end
+
+    def handle_click(x,y)
+      @button.handle_click(x,y)
+    end
 
 
 end

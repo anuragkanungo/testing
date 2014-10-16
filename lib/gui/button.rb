@@ -1,8 +1,6 @@
 # clickable button
 class Gui::Button
 
-  attr_reader :text
-
   def initialize(x1,y1,width,height,color,text)
     @x1 = x1
     @y1 = y1
